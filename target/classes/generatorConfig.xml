@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+
+	<context id="mysqlTables" targetRuntime="MyBatis3">
+		
+	<!-- <commentGenerator> 
+		
+    是否去除自动生成的注释 true：是 ： false:否  
+    <property name="suppressAllComments" value="true" /> 
+    <property name="type" value="com.huigujia.mybatis.plugin.CommonGenerator"/> 
+    数据库连接的信息：驱动类、连接地址、用户名、密码  
+  </commentGenerator> -->
+
+		<!--<commentGenerator type="com.huigujia.mybatis.plugin.CommonGenerator">-->
+		<!--<property name="suppressAllComments" value="true"/>-->
+	<!--</commentGenerator>-->
+
+		<commentGenerator >
+			<property name="suppressAllComments" value="true"/>
+		</commentGenerator>
+
+		<jdbcConnection  driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://121.42.253.157:3309/db_fun" userId="root" password="123456"  />
+		<!--<jdbcConnection  driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.110.2.50:3306/db_manage" userId="dev_user" password="userOF#dev0726"  />-->
+		<!-- 指定生成的类型为java类型，避免数据库中number等类型字段 -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />
+		</javaTypeResolver>
+
+		<!-- 生成model模型，对应的包，存放位置可以指定具体的路径,如/ProjectName/src，也可以使用MAVEN来自动生成 -->
+		<javaModelGenerator targetPackage="com.dtdream.vanyar.announcement.model"
+			targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaModelGenerator>
+
+		<!--对应的xml mapper文件 -->
+		<sqlMapGenerator targetPackage="mapper"
+			targetProject="src/main/resources">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- 对应的dao接口 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.dtdream.vanyar.announcement.dao" targetProject="src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+		<!-- 表与对象映射 -->
+		<table schema="db_fun" tableName="tb_fun"
+			enableCountByExample="false" enableUpdateByExample="false"
+			enableDeleteByExample="false" enableSelectByExample="false"
+			selectByExampleQueryId="false">
+		</table>
+
+		
+		
+	</context>
+</generatorConfiguration>
